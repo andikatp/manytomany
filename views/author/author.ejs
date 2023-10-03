@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/../../public/author.css" type="text/css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="left-nav">
+          <a href="/"
+            ><img
+              src="https://static.wixstatic.com/media/ab2f5c_4090dbbaeafb4b0d975bd44c6cd498f6~mv2_d_5000_3314_s_4_2.png/v1/fill/w_262,h_78,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/code-colored.png"
+              alt="logo"
+          /></a>
+        </div>
+        <div class="middle-nav">
+          <ul>
+            <li><a href="/authors" class="active">Author</a></li>
+            <li><a href="/books">Book</a></li>
+            <li><a href="/authorbooks">AuthorBook</a></li>
+          </ul>
+        </div>
+        <div class="right-nav">
+          <a href="#">Contact Me</a>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="card">
+        <div style="overflow-x: auto" id="tableLain">
+          <table class="styled-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Date of Birth</th>
+                <th>Gender</th>
+                <th>Nationality</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%response.data.map((author) => { %>
+              <tr>
+                <td><%=author.id%></td>
+                <td><a href="/authors/<%=author.id%>/books"><%=author.name%></a></td>
+                <td><%=author.dateOfBirth%></td>
+                <td><%=author.gender%></td>
+                <td><%=author.nationality%></td>
+                <td>
+                  <a href="/authors/update/<%=author.id%>" class="edit">Edit</a>
+                  <a href="/authors/delete/<%=author.id%>?_method=DELETE" class="delete">Delete</a>
+                </td>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+        <div class="add-link">
+          <a href="/authors/create">+Add Author</a>
+        </div>
+      </div>
+    </main>
+    <footer></footer>
+  </body>
+</html>

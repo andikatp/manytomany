@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Author Update</title>
+    <link rel="stylesheet" href="/../../public/form.css" type="text/css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="left-nav">
+          <a href="/"
+            ><img
+              src="https://static.wixstatic.com/media/ab2f5c_4090dbbaeafb4b0d975bd44c6cd498f6~mv2_d_5000_3314_s_4_2.png/v1/fill/w_262,h_78,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/code-colored.png"
+              alt="logo"
+          /></a>
+        </div>
+        <div class="middle-nav">
+          <ul>
+            <li><a href="/authors" class="active">Author</a></li>
+            <li><a href="/books">Book</a></li>
+            <li><a href="/authorbooks">AuthorBook</a></li>
+          </ul>
+        </div>
+        <div class="right-nav">
+          <a href="#">Contact Me</a>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="card">
+        <form action="/authors/update/<%=data.data.dataValues.id%>?_method=patch" method="post">
+          <div class="form">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" value="<%=data.data.dataValues.name%>"/>
+          </div>
+          <div class="form">
+            <label for="dateOfBirth">Date of Birth</label>
+            <input
+              type="date"
+              name="dateOfBirth"
+              id="dateOfBirth"
+              value="<%=data.data.dataValues.dateOfBirth%>"
+            />
+          </div>
+          <div class="form" >
+            <label for="gender">Gender</label>
+            <select name="gender" id="gender">
+                <% if (data.data.dataValues.gender === "Male") { %>
+                  <option value="Male" selected>Male</option>
+                  <option value="Female">Female</option>
+                <% } else { %>
+                  <option value="Male">Male</option>
+                  <option value="Female" selected>Female</option>
+                <% } %>
+              </select>
+          </div>
+          <div class="form">
+            <label for="nationality">Nationality</label>
+            <input type="text" name="nationality" id="nationality" value="<%=data.data.dataValues.nationality%>" />
+          </div>
+          <button type="submit">
+            Submit
+          </button>
+        </form>
+      </div>
+    </main>
+    <footer></footer>
+  </body>
+</html>

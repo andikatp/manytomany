@@ -1,0 +1,114 @@
+* {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-decoration: none;
+  }
+  
+  body {
+    background-color: rgb(226, 230, 234);
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav {
+    background-color: white;
+    display: flex;
+    height: 8vh;
+    align-items: center;
+    padding: 0 40px;
+  }
+  
+  nav ul {
+    display: flex;
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  nav ul li {
+    font-size: 1.5rem;
+    margin-right: 20px;
+  }
+  
+  nav ul li .active {
+    font-weight: bold;
+  }
+  
+  nav .right-nav {
+    background-color: black;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .left-nav {
+    margin: 0;
+    justify-content: left;
+  }
+  
+  .middle-nav {
+    display: flex;
+    flex: 93%;
+    justify-content: center;
+  }
+  
+  .right-nav {
+    display: flex;
+    flex: 7%;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .right-nav a {
+    color: white;
+  }
+  
+  nav img {
+    width: 200px;
+  }
+  
+  a {
+    color: black;
+  }
+  
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .card {
+    display: flex;
+    height: 40vh;
+    margin-top: 17vh;
+    background-color: white;
+    padding: 35px;
+    width: 20vw;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  form {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+  }
+  
+  label {
+      font-weight: bold;
+      font-size: 0.9rem;
+  }
+  
+  label, input, select {
+      width: 100%;
+      margin-bottom: 15px;
+      height: 5vh;
+      box-sizing: border-box;
+  }
+  
+  button {
+      height: 5vh;
+      background-color: black;
+      color: white;
+  }
+  

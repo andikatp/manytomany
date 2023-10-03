@@ -1,0 +1,172 @@
+* {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-decoration: none;
+}
+
+body {
+  background-color: rgb(226, 230, 234);
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  background-color: white;
+  display: flex;
+  height: 8vh;
+  align-items: center;
+  padding: 0 40px;
+}
+
+nav ul {
+  display: flex;
+  list-style-type: none;
+  padding-left: 0;
+}
+
+nav ul li {
+  font-size: 1.5rem;
+  margin-right: 20px;
+}
+
+nav ul li .active {
+  font-weight: bold;
+}
+
+nav .right-nav {
+  background-color: black;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.left-nav {
+  margin: 0;
+  justify-content: left;
+}
+
+.middle-nav {
+  display: flex;
+  flex: 93%;
+  justify-content: center;
+}
+
+.right-nav {
+  display: flex;
+  flex: 7%;
+  justify-content: center;
+  text-align: center;
+}
+
+.right-nav a {
+  color: white;
+}
+
+nav img {
+  width: 200px;
+}
+
+a {
+  color: black;
+}
+
+.card {
+  display: flex;
+  margin: 150px 300px;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 0px 0px 15px #cecece;
+  padding: 35px;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  flex-direction: column;
+}
+
+tr:nth-child(even) {
+  background-color: #dfdddd;
+}
+
+.add-link {
+  display: flex;
+  width: 100%;
+  margin-top: 10px;
+  justify-content: end;
+}
+
+.add-link a {
+  background-color: black;
+  color: white;
+  padding: 12px;
+  border-radius: 7px;
+}
+
+.edit {
+  background-color: #0d6efd;
+  color: white;
+  padding: 5px 14px;
+  border-radius: 5px;
+  margin-right: 2px;
+}
+
+.delete {
+  background-color: #dc3545;
+  color: white;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin-left: 2px;
+}
+
+.styled-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styled-table thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+  padding: 25px 15px;
+}
+
+.styled-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+
+.styled-table tbody tr.active-row {
+  font-weight: bold;
+  color: #009879;
+}
+
+#tableLain {
+  width: 100%;
+}
+
+.form {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+label {
+  margin-bottom: 10px;
+}

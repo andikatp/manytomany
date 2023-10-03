@@ -1,0 +1,424 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Bookstore API",
+    "description": "API for CRUD operations of book, author, and bookAuthor created using express, postgres, and sequelize. Made by Andika Tri Prasetya.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Andika Tri Prasetya",
+      "url": "https://logrocket.com",
+      "email": "triprasetya_andika@yahoo.com"
+    }
+  },
+  "components": {
+    "schemas": {
+      "Authors": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "dateOfBirth": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "string"
+          },
+          "nationality": {
+            "type": "string"
+          }
+        },
+        "required": ["name", "dateOfBirth", "gender", "nationality"]
+      },
+      "Books": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "genre": {
+            "type": "string"
+          },
+          "publisher": {
+            "type": "string"
+          },
+          "publicationYear": {
+            "type": "integer"
+          }
+        },
+        "required": ["name", "genre", "publisher", "publicationYear"]
+      },
+      "AuthorBooks": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "authorId": "integer"
+          },
+          "bookId": {
+            "type": "integer"
+          }
+        },
+        "required": ["authorId", "bookId"]
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "localhost"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Authors",
+      "description": "API CRUD for Auhtors"
+    },
+    {
+      "name": "Books",
+      "description": "API CRUD for Books"
+    },
+    {
+      "name": "AuthorBooks",
+      "description": "API CRUD for AuthorBooks"
+    }
+  ],
+  "paths": {
+    "/authors": {
+      "get": {
+        "tags": ["Authors"],
+        "summary": "Get All Auhtors",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/authors/create": {
+      "post": {
+        "tags": ["Authors"],
+        "summary": "Create an Auhtor",
+        "description": "",
+        "requestBody": {
+          "description": "Create an author by specifying name, date of birth, gender, and nationality.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "name": "Mathew Sadder",
+                "dateOfBirth": "1993-01-30",
+                "gender": "Male",
+                "nationality": "Indonesia"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/authors/delete/{id}": {
+      "delete": {
+        "tags": ["Authors"],
+        "summary": "Delete an Author by ID",
+        "description": "Delete an auhtor by specifying the ID in the URL path.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the author to delete",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/authors/update/{id}": {
+      "patch": {
+        "tags": ["Authors"],
+        "summary": "Update an Authors by ID",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Authors to update.",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Create an Author by specifying name, date of birth, gender, and nationality.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "name": "Mathew Sadder",
+                "dateOfBirth": "1993-01-30",
+                "gender": "Male",
+                "nationality": "Indonesia"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/authors/{id}/books": {
+      "get": {
+        "tags": ["Authors"],
+        "summary": "Get Books from Author by ID",
+        "description": "Get books from a spesific auhtor by specifying the ID in the URL path.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the author",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/books": {
+      "get": {
+        "tags": ["Books"],
+        "summary": "Get All Books",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/books/create": {
+      "post": {
+        "tags": ["Books"],
+        "summary": "Create a Book",
+        "description": "",
+        "requestBody": {
+          "description": "Create a book by specifying name, genre, publisher, and publication year.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "name": "Lord of The Rings",
+                "genre": "Fantasy",
+                "publisher": "Mathaw Synergy",
+                "publicationYear": 2020
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/books/delete/{id}": {
+      "delete": {
+        "tags": ["Books"],
+        "summary": "Delete a Book by ID",
+        "description": "Delete a book by specifying the ID in the URL path.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the book to delete",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/books/update/{id}": {
+      "patch": {
+        "tags": ["Books"],
+        "summary": "Update a Book by ID",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the book to update.",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Update an book by specifying name, genre, publisher, and publication year.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "name": "Lord of The Rings",
+                "genre": "Fantasy",
+                "publisher": "Mathaw Synergy",
+                "publicationYear": 2020
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/books/{id}/authors": {
+      "get": {
+        "tags": ["Books"],
+        "summary": "Get Authors from Book by ID",
+        "description": "Get authors from a spesific book by specifying the ID in the URL path.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the book",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/authorBooks": {
+      "get": {
+        "tags": ["AuthorBooks"],
+        "summary": "Get All AuthorBooks",
+        "description": "Junction table between authors and books",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/authorBooks/create": {
+      "post": {
+        "tags": ["AuthorBooks"],
+        "summary": "Create an author book",
+        "description": "",
+        "requestBody": {
+          "description": "Create a junction between author and book by specifying author id and book id.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "authorId": 1,
+                "bookId": 4
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/authorBooks/delete/{id}": {
+      "delete": {
+        "tags": ["AuthorBooks"],
+        "summary": "Delete an author book by ID",
+        "description": "Delete an author book by specifying the ID in the URL path.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the author book to delete",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/authorBooks/update/{id}": {
+      "patch": {
+        "tags": ["AuthorBooks"],
+        "summary": "Update an author book by ID",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the author book to update.",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Update an author book by specifying authorId and bookId.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "authorId": 1,
+                "bookId": 4
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "apis": ["./routes/*.js"]
+}
